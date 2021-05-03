@@ -1,0 +1,10 @@
+(퀴즈1) 
+-------
+
+tagCreateAttributeEvent.html 에서 사용한 createElement(), appendChild(), setAttribute() 를
+사용하여 jQueryStyle.html 안에 있는 다음 코드를 치환하여 동일한 결과가 나오도록 하라.
+
+                $('<div></div>').css({
+                    height: 2,
+                    background: 'rgb(' + i + ',' + i + ',' + i + ')'
+                }).appendTo('body');

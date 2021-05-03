@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <input id="user" type="text" value="값">
+
+  <script>
+
+    const $input = document.getElementById('user');
+    $input.oninput = () => {
+      console.log('value 프로퍼티 값', $input.value);
+    };
+    console.log('value 어트리뷰트 값', $input.getAttribute('value'));
+
+    const $div = document.createElement('div');
+    const textNode = document.createTextNode('영상선택');
+    $div.appendChild(textNode);
+    $div.onclick = () => {
+      alert('<div> tag is clicked!!!');
+    };
+    $div.setAttribute('id', 'divId');
+    $div.setAttribute('style', `width:500px;height:200px;background-color:red;color:blue;`); 
+
+    const $parent = $input.parentNode;
+    $parent.insertBefore($div, $input);
+    const $br = document.createElement('br');
+    $parent.insertBefore($br, $input);
+
+  </script>
+</body>
+</html>
