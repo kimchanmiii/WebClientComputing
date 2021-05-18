@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XMLHttpRequest</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#get').click(function () {
+                $.ajax({
+                    url: '/products',
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+
+            $('#post').click(function () {
+                $.ajax({
+                    url: '/products',
+                    type: 'post',
+                    dataType: 'text',
+                    data: {
+                        name: $('#name').val(),
+                        price: $('#price').val()
+                    },
+                    success: function (data) {
+                        $('#output').val(data);
+                        $('#new_name').val($('#name').val());
+                        $('#new_price').val($('#price').val());
+                    }
+                });
+            });
+
+            $('#put').click(function () {
+                $.ajax({
+                    url: '/products/' + $('#index').val(),
+                    type: 'put',
+                    dataType: 'text',
+                    data: {
+                        name: $('#name').val(),
+                        price: $('#price').val(),
+                        index: $('#index').val()
+                    },
+                    success: function (data) {
+                        $('#output').val(data);
+                        $('#new_name').val($('#name').val());
+                        $('#new_price').val($('#price').val());
+                    }
+                });
+            });
+
+            $('#delete').click(function () {
+                $.ajax({
+                    
+                    url: '/products/' + $('#index').val(),
+                    type: 'delete',
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#output').val(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h4>입력 명령 버튼:</h4>
+    <button id="get">음료객체정보읽기 (GET)</button>
+    <button id="post">신규음료 등록 (POST)</button>
+    <button id="put">기존음료수정 (PUT)</button>
+    <button id="delete">기존음료삭제 (DELETE)</button>
+    <br><br><hr>
+    <h4>입력데이터:</h4>
+    <p>음료 이름: <input id="name" /></p>
+    <p>음료 가격: <input id="price" /></p>
+    <p>음료index: <input id="index" /></p>
+    <br><hr>
+    <h4>응답 메시지 전체:</h4>
+    <textarea id="output" disabled="disabled" cols="40" rows="5"></textarea>
+    <h4>수정/추가 이후 해당 음료 정보:</h4>
+    <p>음료 이름: <input id="new_name" /></p>
+    <P>음료 가격: <input id="new_price" /></p>
+</body>
+</html>
